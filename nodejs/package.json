@@ -1,0 +1,33 @@
+{
+  "name": "heimdal",
+  "description": "Heimdal Monitoring System",
+  "version": "0.1.0",
+  "homepage": "https://github.com/dailos/heimdal",
+  "author": {
+    "name": "Dailos Marrero",
+    "email": "dailos@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dailos/heimdal.git"
+  },
+  "main": "src",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt nodeunit"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",    
+    "grunt-contrib-watch": "~0.4.0",    
+    "grunt-nodemon": "~0.1.0",
+    "grunt-concurrent": "~0.3.0",   
+    "firmata": "~0.2.9",
+    "grunt": "~0.4.1",
+    "moment": "~2.1.0",
+    "socket.io" :  "~0.9.6",
+    "request" : "~2.27.0"  
+  },
+  "keywords": []
+}

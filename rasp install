@@ -1,0 +1,58 @@
+/*Remote access*/
+sudo apt-get install xrdp
+
+/* Install Nodejs */
+1)
+wget http://nodejs.org/dist/v0.11.6/node-v0.11.6-linux-arm-pi.tar.gz
+cd /usr/local 
+sudo tar xzvf ~/node-v0.8.21-linux-arm-pi.tar.gz --strip=1
+
+
+/*install git (not really needed)*/
+sudo apt-get install git-core 
+
+/*add repository */
+mkdir git
+cd git
+git clone git://github.com/dailos/heimdal.git
+
+//install yeoman
+npm install -g yo
+
+cd heimdal
+npm install
+
+
+/*start script */
+save as boot.sh
+
+#!/bin/bash
+
+NODE=/usr/local/bin/node
+SERVER_JS_FILE=/home/pi/git/heimdal/src/app.js
+USER=pi
+OUT=/home/pi/nodejs.log
+
+case "$1" in
+
+start)
+	echo "starting node: $NODE $SERVER_JS_FILE"
+	sudo -u $USER $NODE $SERVER_JS_FILE > $OUT 2>$OUT &
+	;;
+
+stop)
+	killall $NODE
+	;;
+
+*)
+	echo "usage: $0 (start|stop)"
+esac
+
+exit 0
+
+
+/*bootloader*/
+
+chmod 755 nodejs.sh
+sudo cp boot.sh /etc/init.d
+sudo update-rc.d boot.sh defaults
